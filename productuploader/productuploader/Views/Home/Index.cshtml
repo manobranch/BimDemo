@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<productuploader.Objects.Product>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -8,24 +9,17 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="col-md-4">
-            <img src="https://bimdemostorage.blob.core.windows.net/products/car.jpg" width="250" height="250">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <img src="@item.ImagePath" width="250" height="250">
+            </div>
+            <div class="col-md-8">
+                <h2>@item.Name</h2>
+                <p>@item.Description</p>
+                <p><i>@item.Price :-</i></p>
+            </div>
         </div>
-        <div class="col-md-8">
-            <h2>Car</h2>
-            <p>En häftig radiostyrd bil</p>
-            <p><i>299:-</i></p>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <div class="col-md-4">
-            <img src="https://bimdemostorage.blob.core.windows.net/products/fia.jpg" width="250" height="250">
-        </div>
-        <div class="col-md-8">
-            <h2>Car</h2>
-            <p>En häftig radiostyrd bil</p>
-            <p><i>299:-</i></p>
-        </div>
-    </div>
+    }
 </div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using productuploader.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace productuploader.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var products = BusinessLogic.GetProducts();
+            return View(products);
         }
 
         public ActionResult About()

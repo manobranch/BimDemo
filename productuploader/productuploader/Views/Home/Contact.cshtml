@@ -1,17 +1,42 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div>
+    @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div>
+                    <h2>Lägg till produkt</h2>
+                </div>
+            </div>
+            <div class="panel-body">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                <table>
+                    <tr class="no-stripes col-md-12">
+                        <td class="pw col-md-3">Namn</td>
+                        <td class="pw2 col-md-9"><input class="pi" type="text" name="name" /></td>
+                    </tr>
+                </table>
+                <br /><br />
+                <table>
+                    <tr class="no-stripes col-md-12">
+                        <td class="pw col-md-3">Pris</td>
+                        <td class="pw2 col-md-9"><input class="pi" type="text" name="price" /></td>
+                    </tr>
+                </table>
+                <br /><br />
+                <table>
+                    <tr class="no-stripes col-md-12">
+                        <td class="pw col-md-3">Beskrivning</td>
+                        <td class="pw2 col-md-9"><input class="pi" type="text" name="description" /></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-success" value="Lägg till product" />
+        </div>}
+</div>

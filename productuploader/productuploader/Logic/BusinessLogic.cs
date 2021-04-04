@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace productuploader.Logic
 {
@@ -11,6 +12,18 @@ namespace productuploader.Logic
         public static List<Product> GetProducts()
         {
             return DataBaseLogic.GetProducts();
+        }
+
+        internal static bool AddProduct(FormCollection col)
+        {
+            Product newProduct = new Product()
+            {
+                Name = col["name"],
+                Price = Convert.ToInt32(col["price"]),
+                Description = col["description"]
+            };
+
+            return true;
         }
     }
 }

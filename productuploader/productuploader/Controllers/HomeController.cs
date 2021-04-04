@@ -28,5 +28,13 @@ namespace productuploader.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Contact(FormCollection col)
+        {
+            var saveResult = BusinessLogic.AddProduct(col);
+
+            return View();
+        }
     }
 }

@@ -15,17 +15,26 @@ namespace productuploader.Logic
 
         public static List<Product> GetProducts()
         {
-            using (var db = GetDbContext())
+            InsightsLogic.LogInfo("Starting getting products");
+            try
             {
-                return (from hits in db.Articles
-                        select hits).Select(a => new Product
-                        {
-                            Id = a.Id,
-                            Name = a.Name,
-                            Price = a.Price,
-                            Description = a.Description,
-                            ImagePath = a.ImagePath
-                        }).ToList();
+                using (var db = GetDbContext())
+                {
+                    return (from hits in db.Articles
+                            select hits).Select(a => new Product
+                            {
+                                Id = a.Id,
+                                Name = a.Name,
+                                Price = a.Price,
+                                Description = a.Description,
+                                ImagePath = a.ImagePath
+                            }).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                InsightsLogic.LogError("Error when getting articles.", e);
+                throw;
             }
         }
 

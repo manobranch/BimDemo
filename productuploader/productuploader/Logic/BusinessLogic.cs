@@ -28,6 +28,7 @@ namespace productuploader.Logic
                 ImagePath = imagePath
             };
 
+            DataBaseLogic.InsertProduct(newProduct);
 
             return true;
         }

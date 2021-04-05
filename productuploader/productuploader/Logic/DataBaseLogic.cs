@@ -28,5 +28,23 @@ namespace productuploader.Logic
                         }).ToList();
             }
         }
+
+        public static void InsertProduct(Product product)
+        {
+            using (var db = GetDbContext())
+            {
+                var newDbProduct = new Article
+                {
+                    Name = product.Name,
+                    Price = product.Price,
+                    Description = product.Description,
+                    ImagePath = product.ImagePath
+                };
+
+                db.Articles.Add(newDbProduct);
+
+                db.SaveChanges();
+            }
+        }
     }
 }

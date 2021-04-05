@@ -30,6 +30,8 @@ namespace productuploader.Logic
 
             DataBaseLogic.InsertProduct(newProduct);
 
+            QueueLogic.PutMessageOnQueue(newProduct.ImagePath);
+
             return true;
         }
     }

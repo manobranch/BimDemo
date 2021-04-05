@@ -14,14 +14,20 @@ namespace productuploader.Logic
             return DataBaseLogic.GetProducts();
         }
 
-        internal static bool AddProduct(FormCollection col)
+        internal static bool AddProduct(FormCollection col, HttpPostedFileBase[] file)
         {
+            // Upload to blob storage
+            var imagePath = BlobStorageLogic.UploadBlob(file[0]);
+
+            // Create basic product
             Product newProduct = new Product()
             {
                 Name = col["name"],
                 Price = Convert.ToInt32(col["price"]),
-                Description = col["description"]
+                Description = col["description"],
+                ImagePath = imagePath
             };
+
 
             return true;
         }

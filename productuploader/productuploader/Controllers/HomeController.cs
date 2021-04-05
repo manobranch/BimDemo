@@ -30,9 +30,9 @@ namespace productuploader.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contact(FormCollection col)
+        public ActionResult Contact(FormCollection col, HttpPostedFileBase[] file)
         {
-            var saveResult = BusinessLogic.AddProduct(col);
+            var saveResult = BusinessLogic.AddProduct(col, file);
 
             return View();
         }

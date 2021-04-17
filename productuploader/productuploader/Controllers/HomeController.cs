@@ -19,6 +19,8 @@ namespace productuploader.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
+            BusinessLogic.WebRequest();
+
             return View();
         }
 
@@ -32,9 +34,20 @@ namespace productuploader.Controllers
         [HttpPost]
         public ActionResult Contact(FormCollection col, HttpPostedFileBase[] file)
         {
-            var saveResult = BusinessLogic.AddProduct(col, file);
+            BusinessLogic.AddProduct(col, file);
 
             return View();
         }
+
+        public ActionResult CreateError()
+        {
+            ViewBag.Message = "Create some error";
+
+            BusinessLogic.ThrowException();
+
+
+            return View();
+        }
+
     }
 }

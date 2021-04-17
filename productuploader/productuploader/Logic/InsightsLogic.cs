@@ -23,9 +23,7 @@ namespace productuploader.Logic
         {
             string textToLog = BuildLogText(level, logText, e);
 
-            telemetry.TrackTrace(textToLog, Microsoft.ApplicationInsights.DataContracts.SeverityLevel.Information);
             telemetry.TrackEvent($"Tracking Event: {logText}");
-            telemetry.TrackMetric($"Tracring Metric: {logText}", 777);
 
             telemetry.Flush();
         }
